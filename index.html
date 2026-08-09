@@ -289,7 +289,10 @@ header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
   <img id="modalImg" src="" alt="拡大画像">
   <button class="modal-close" onclick="document.getElementById('imgModal').classList.remove('open')">✕ 閉じる</button>
 </div>
-<div class="tab-bar" id="tabBar"></div>
+<div style="display: flex; background: #fff; border-bottom: 2px solid #cbd5e1; justify-content: center; align-items: center;">
+  <div class="tab-bar" id="tabBar" style="border-bottom: none;"></div>
+  <a href="theme.html" style="padding: 12px 16px; font-weight: bold; color: #1a62bf; text-decoration: none; border-bottom: 3px solid transparent; font-size: 0.95rem; white-space: nowrap;">🎯 テーマ別</a>
+</div>
 <div id="unitBar" style="display:none" class="unit-bar"></div>
 <div id="mainContent"></div>
 <div id="bankArea" style="display:none" class="bank-area">
