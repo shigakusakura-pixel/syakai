@@ -1,39 +1,35 @@
-/* メインタブナビゲーション（画面横幅いっぱいに5等分拡大） */
-.main-tabs {
+/* 🌟 メインタブバー：画面幅100%に完全5等分（各20%）配置 🌟 */
+.tab-bar {
   display: flex !important;
   width: 100% !important;
-  max-width: none !important; /* 中央縮小を解除 */
-  background-color: #ffffff;
-  border-bottom: 2px solid var(--border-color);
+  background: #fff;
+  border-bottom: 2px solid var(--border);
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* スクロールバーを強制非表示 */
+  overflow: hidden; /* 横スクロールバーを排除 */
 }
-
-.tab-btn {
-  flex: 1 1 0% !important; /* 5つのタブを完全に均等幅（20%ずつ）にする */
+.tab-btn, .tab-link {
+  flex: 1 1 0% !important; /* 均等に5分割（各20%） */
   width: 20% !important;
-  text-align: center;
-  padding: 14px 0;
-  background: none;
+  padding: 11px 2px;
   border: none;
-  font-weight: bold;
-  color: #475569;
+  background: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--sub);
   cursor: pointer;
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
-  font-size: 0.95rem;
+  white-space: nowrap;
+  text-align: center;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
   box-sizing: border-box;
 }
-
-.tab-btn.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--primary-color);
-  background-color: #f8fafc;
+.tab-btn.active, .tab-link.active {
+  color: var(--main);
+  border-bottom-color: var(--main);
+  background: #f5f8ff;
 }
+.tab-btn:hover:not(.active), .tab-link:hover:not(.active) { background: #f8f8f8; }
