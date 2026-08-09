@@ -51,10 +51,19 @@ header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
   border-bottom: 2px solid var(--border);
   overflow-x: auto;
 }
-.tab-btn {
-  flex: 1;
-  min-width: 70px;
-  padding: 11px 6px;
+/* 🌟 メインタブバー：画面幅100%に完全5等分（各20%）配置 🌟 */
+.tab-bar {
+  display: flex !important;
+  width: 100% !important;
+  background: #fff;
+  border-bottom: 2px solid var(--border);
+  box-sizing: border-box;
+  overflow: hidden; /* 横スクロールバーを排除 */
+}
+.tab-btn, .tab-link {
+  flex: 1 1 0% !important; /* 均等に5分割（各20%） */
+  width: 20% !important;
+  padding: 11px 2px;
   border: none;
   background: none;
   font-size: 0.88rem;
@@ -64,8 +73,19 @@ header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
   white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
-.tab-btn.active { color: var(--main); border-bottom-color: var(--main); background: #f5f8ff; }
+.tab-btn.active, .tab-link.active {
+  color: var(--main);
+  border-bottom-color: var(--main);
+  background: #f5f8ff;
+}
+.tab-btn:hover:not(.active), .tab-link:hover:not(.active) { background: #f8f8f8; }
 .tab-btn:hover:not(.active) { background: #f8f8f8; }
 .unit-bar {
   display: flex;
@@ -289,10 +309,7 @@ header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
   <img id="modalImg" src="" alt="拡大画像">
   <button class="modal-close" onclick="document.getElementById('imgModal').classList.remove('open')">✕ 閉じる</button>
 </div>
-<div style="display: flex; background: #fff; border-bottom: 2px solid #cbd5e1; justify-content: center; align-items: center;">
-  <div class="tab-bar" id="tabBar" style="border-bottom: none;"></div>
-  <a href="theme.html" style="padding: 12px 16px; font-weight: bold; color: #1a62bf; text-decoration: none; border-bottom: 3px solid transparent; font-size: 0.95rem; white-space: nowrap;">🎯 テーマ別</a>
-</div>
+<div class="tab-bar" id="tabBar"></div>
 <div id="unitBar" style="display:none" class="unit-bar"></div>
 <div id="mainContent"></div>
 <div id="bankArea" style="display:none" class="bank-area">
@@ -1306,14 +1323,19 @@ function renderAll() {
 
 function renderTabBar() {
   const tabs = [
-    { id:'geo', label:'🌍 地理' },
-    { id:'his', label:'📜 歴史' },
-    { id:'civ', label:'⚖️ 公民' },
-    { id:'yot', label:'📋 要点チェック' }
+    { id:'geo', label:'🌍 地理', type:'btn' },
+    { id:'his', label:'📜 歴史', type:'btn' },
+    { id:'civ', label:'⚖️ 公民', type:'btn' },
+    { id:'theme', label:'🎯 テーマ別', type:'link', url:'theme.html' }, // 👈 テーマ別リンクを追加
+    { id:'yot', label:'📋 要点チェック', type:'btn' }
   ];
-  document.getElementById('tabBar').innerHTML = tabs.map(t =>
-    `<button class="tab-btn${currentTab===t.id?' active':''}" onclick="switchTab('${t.id}')">${t.label}</button>`
-  ).join('');
+  document.getElementById('tabBar').innerHTML = tabs.map(t => {
+    if (t.type === 'link') {
+      return `<a href="${t.url}" class="tab-link">${t.label}</a>`;
+    } else {
+      return `<button class="tab-btn${currentTab===t.id?' active':''}" onclick="switchTab('${t.id}')">${t.label}</button>`;
+    }
+  }).join('');
 }
 
 function switchTab(tab) {
