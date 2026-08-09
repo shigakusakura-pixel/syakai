@@ -146,6 +146,10 @@
       border: 1px solid transparent;
     }
 
+    .era-旧石器 { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+    .era-縄文   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
+    .era-弥生   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
+    .era-飛鳥   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-弥生   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
     .era-飛鳥   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-奈良   { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
@@ -366,7 +370,29 @@
         ]
       }
     };
-
+　　　　// 388行目あたりの no3 の閉じタグ「]」の直後にカンマ「,」を入れて追加
+      ,
+      no4: {
+        title: "教科書に出てくる日本の文化 No.4 (旧石器～大正)",
+        list: [
+          { q: "【旧石器】石を打ち欠いただけの石器。ナウマンゾウなどの狩猟に使用。", a: "打製石器", exp: "岩宿遺跡や野尻湖で出土。打製石器を使って狩猟・採集を行いました。" },
+          { q: "【縄文】縄目の文様が多く見られ、厚手でもろい特徴を持つ土器。", a: "縄文土器", exp: "煮炊きや保存に使用。この時代には磨製石器や貝塚、土偶なども登場します。" },
+          { q: "【弥生】稲の保存用として建てられ、ねずみ返しの構造などで湿気を防いだ建物。", a: "高床倉庫", exp: "水稲耕作が始まり、収穫には石包丁が使われました。" },
+          { q: "【古墳】大仙古墳に代表される、方形の前部と円形の後部からなる古墳の形。", a: "前方後円墳", exp: "当時の大王の強い権力を示しています。周りには素焼きの「はにわ」が並べられました。" },
+          { q: "【飛鳥】聖徳太子が建立したとされる、現存する世界最古の木造建築物。", a: "法隆寺", exp: "日本初の仏教文化である飛鳥文化を代表する世界遺産です。" },
+          { q: "【天平】聖武天皇の愛用品などが納められている、唐の影響を受けた東大寺の建物。", a: "正倉院", exp: "唐の文化の影響を受けた国際色豊かな天平文化を象徴する建物です。" },
+          { q: "【平安】藤原頼通が宇治に極楽浄土を再現しようとして建てた阿弥陀堂。", a: "平等院鳳凰堂", exp: "遣唐使廃止後の国風文化の時代に、貴族の間で浄土信仰が広まり建てられました。" },
+          { q: "【鎌倉】東大寺南大門にある、運慶・快慶らによって作られた力強い彫刻。", a: "金剛力士像", exp: "武家社会の素朴で力強い気質を表した彫刻作品です。" },
+          { q: "【室町】足利義満が京都の北山に建てた、公家文化と武家文化が融合した寺院。", a: "鹿苑寺金閣", exp: "簡素で深みのある北山文化の代表建築です。能が観阿弥・世阿弥により大成されました。" },
+          { q: "【室町】足利義政が京都の東山に建てた、床の間をもつ「書院造」の建築。", a: "慈照寺銀閣", exp: "東山文化の象徴。水墨画を大成した雪舟や、狂言・連歌なども栄えました。" },
+          { q: "【桃山】「わび茶」の作法を完成させた、織田信長や豊臣秀吉に仕えた人物。", a: "千利休", exp: "新興大名や大商人の豪華な桃山文化の中で、質素な美を追究したわび茶を確立しました。" },
+          { q: "【江戸】『見返り美人図』を描き、浮世絵の基礎を築いた絵師。", a: "菱川師宣", exp: "上方（京都・大阪）を中心に栄えた元禄文化を代表する浮世絵師です。" },
+          { q: "【江戸】「富嶽三十六景」を描き、風景画の分野で大きな影響を与えた浮世絵師。", a: "葛飾北斎", exp: "江戸の町人を中心に栄えた化政文化（大衆文化）の代表的な画家です。" },
+          { q: "【明治】『学問のすすめ』を著し、慶應義塾を創設した人物。", a: "福沢諭吉", exp: "文明開化が進む明治時代に、西洋の思想や学問を広く紹介しました。" },
+          { q: "【大正】プロレタリア文学の代表作『蟹工船』を著した作家。", a: "小林多喜二", exp: "大正デモクラシーの背景のもと、大衆文化や労働運動に関わる文学が発達しました。" }
+        ]
+      }
+    
     let currentSetKey = 'no1';
     let selectedBox = null;
 
@@ -377,12 +403,12 @@
     }
 
     function loadSet(key) {
-      currentSetKey = key;
-      const data = personQuestionsData[key];
-      
-      document.querySelectorAll('.sub-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', (key==='no1'&&idx===0)||(key==='no2'&&idx===1)||(key==='no3'&&idx===2));
-      });
+  currentSetKey = key;
+  const data = personQuestionsData[key];
+  
+  document.querySelectorAll('.sub-btn').forEach((btn, idx) => {
+    btn.classList.toggle('active', (key==='no1'&&idx===0)||(key==='no2'&&idx===1)||(key==='no3'&&idx===2)||(key==='no4'&&idx===3));
+  });
 
       document.getElementById('section-title').textContent = data.title;
 
