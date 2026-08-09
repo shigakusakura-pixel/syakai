@@ -150,8 +150,6 @@
     .era-縄文   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-弥生   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
     .era-飛鳥   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
-    .era-弥生   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
-    .era-飛鳥   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-奈良   { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
     .era-平安   { background-color: #dcfce7; color: #166534; border-color: #bbf7d0; }
     .era-鎌倉   { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
@@ -276,7 +274,7 @@
       <button class="sub-btn" onclick="loadSet('no2')">人物 No.2 (室町〜江戸)</button>
       <button class="sub-btn" onclick="loadSet('no3')">人物 No.3 (江戸〜昭和)</button>
       <button class="sub-btn" onclick="loadSet('no4')">日本の文化 No.4 (旧石器〜大正)</button>
-</div>
+    </div>
 
     <div class="section-title" id="section-title">教科書に出てくる歴史人物 No.1 (弥生～鎌倉)</div>
 
@@ -369,10 +367,7 @@
           { q: "【昭和】1965年日韓基本条約を結ぶ。沖縄本土復帰を実現。", a: "佐藤栄作", exp: "非核三原則を打ち出した功績などから、ノーベル平和賞を受賞しました。" },
           { q: "【昭和】1972年日中共同声明を発表、中国との国交が正常化。", a: "田中角栄", exp: "「日本列島改造論」を掲げ、大規模なインフラ整備を推進しました。" }
         ]
-      }
-    };
-　　　　// 388行目あたりの no3 の閉じタグ「]」の直後にカンマ「,」を入れて追加
-      ,
+      },
       no4: {
         title: "教科書に出てくる日本の文化 No.4 (旧石器～大正)",
         list: [
@@ -393,7 +388,8 @@
           { q: "【大正】プロレタリア文学の代表作『蟹工船』を著した作家。", a: "小林多喜二", exp: "大正デモクラシーの背景のもと、大衆文化や労働運動に関わる文学が発達しました。" }
         ]
       }
-    
+    };
+
     let currentSetKey = 'no1';
     let selectedBox = null;
 
@@ -404,12 +400,12 @@
     }
 
     function loadSet(key) {
-  currentSetKey = key;
-  const data = personQuestionsData[key];
-  
-  document.querySelectorAll('.sub-btn').forEach((btn, idx) => {
-    btn.classList.toggle('active', (key==='no1'&&idx===0)||(key==='no2'&&idx===1)||(key==='no3'&&idx===2)||(key==='no4'&&idx===3));
-  });
+      currentSetKey = key;
+      const data = personQuestionsData[key];
+      
+      document.querySelectorAll('.sub-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', (key==='no1'&&idx===0)||(key==='no2'&&idx===1)||(key==='no3'&&idx===2)||(key==='no4'&&idx===3));
+      });
 
       document.getElementById('section-title').textContent = data.title;
 
