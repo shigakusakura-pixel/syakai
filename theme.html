@@ -1,35 +1,86 @@
-/* 🌟 メインタブバー：画面幅100%に完全5等分（各20%）配置 🌟 */
-.tab-bar {
-  display: flex !important;
-  width: 100% !important;
-  background: #fff;
-  border-bottom: 2px solid var(--border);
-  box-sizing: border-box;
-  overflow: hidden; /* 横スクロールバーを排除 */
-}
-.tab-btn, .tab-link {
-  flex: 1 1 0% !important; /* 均等に5分割（各20%） */
-  width: 20% !important;
-  padding: 11px 2px;
-  border: none;
-  background: none;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--sub);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s;
-  white-space: nowrap;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-.tab-btn.active, .tab-link.active {
-  color: var(--main);
-  border-bottom-color: var(--main);
-  background: #f5f8ff;
-}
-.tab-btn:hover:not(.active), .tab-link:hover:not(.active) { background: #f8f8f8; }
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中学社会 一問一答 | 志学ゼミナール</title>
+  
+  <style>
+    /* ▼ デザインコードは必ずこの <style> と </style> の中に挟みます ▼ */
+    :root {
+      --primary-color: #1a62bf;
+      --bg-color: #edf2f7;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --border-color: #cbd5e1;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", MeiRyo, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* ヘッダー */
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    header p {
+      margin: 3px 0 0;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* メインタブナビゲーション（画面横幅いっぱいに5等分拡大） */
+    .main-tabs {
+      display: flex !important;
+      width: 100% !important;
+      max-width: none !important;
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--border-color);
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .tab-btn {
+      flex: 1 1 0% !important;
+      width: 20% !important;
+      text-align: center;
+      padding: 14px 0;
+      background: none;
+      border: none;
+      font-weight: bold;
+      color: #475569;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      background-color: #f8fafc;
+    }
+  </style> <!-- ▲ ここでデザイン終了 ▲ -->
+</head>
