@@ -83,6 +83,7 @@
       padding: 0 10px 140px;
     }
 
+    /* サブタブ幅均一・表示調整 */
     .sub-tabs {
       display: flex;
       gap: 8px;
@@ -90,7 +91,9 @@
       flex-wrap: wrap;
     }
     .sub-btn {
-      padding: 6px 16px;
+      flex: 1 1 calc(20% - 8px);
+      min-width: 140px;
+      padding: 8px 10px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background-color: white;
@@ -98,6 +101,9 @@
       cursor: pointer;
       font-weight: bold;
       font-size: 0.85rem;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 0.2s;
     }
     .sub-btn.active {
       background-color: #f59e0b;
@@ -146,18 +152,26 @@
       border: 1px solid transparent;
     }
 
+    /* 各時代のバッジ背景色 */
     .era-旧石器 { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
     .era-縄文   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-弥生   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
+    .era-古墳   { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
     .era-飛鳥   { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
     .era-奈良   { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
+    .era-天平   { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
     .era-平安   { background-color: #dcfce7; color: #166534; border-color: #bbf7d0; }
+    .era-国風   { background-color: #dcfce7; color: #166534; border-color: #bbf7d0; }
     .era-鎌倉   { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
     .era-南北朝 { background-color: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
     .era-室町   { background-color: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+    .era-北山   { background-color: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+    .era-東山   { background-color: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
     .era-安土   { background-color: #fce7f3; color: #9d174d; border-color: #fbcfe8; }
     .era-桃山   { background-color: #fce7f3; color: #9d174d; border-color: #fbcfe8; }
     .era-安土桃山 { background-color: #fce7f3; color: #9d174d; border-color: #fbcfe8; }
+    .era-元禄   { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+    .era-化政   { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
     .era-江戸   { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
     .era-明治   { background-color: #ccfbf1; color: #115e59; border-color: #99f6e4; }
     .era-大正   { background-color: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
