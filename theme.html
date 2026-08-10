@@ -83,30 +83,27 @@
       padding: 0 10px 140px;
     }
 
-    /* サブタブの折り返し禁止＆幅均一化調整 */
+    /* ★ サブタブの表示崩れ・はみ出し防止CSS ★ */
     .sub-tabs {
       display: flex;
       gap: 6px;
       margin-bottom: 15px;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 4px;
+      flex-wrap: wrap; /* 画面幅が狭い場合は綺麗に段落ち */
     }
     .sub-btn {
-      flex: 1 1 0%;
-      min-width: 0;
-      padding: 8px 6px;
+      flex: 1 1 auto; /* 内容量に応じて均等かつ柔軟に伸縮 */
+      padding: 8px 10px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background-color: white;
       color: #475569;
       cursor: pointer;
       font-weight: bold;
-      font-size: 0.82rem;
+      font-size: 0.78rem; /* 文字サイズ調整で枠内収まりを保証 */
       text-align: center;
       box-sizing: border-box;
       transition: all 0.2s;
-      white-space: nowrap; /* テキスト改行を禁止 */
+      white-space: nowrap;
     }
     .sub-btn.active {
       background-color: #f59e0b;
