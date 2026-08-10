@@ -25,33 +25,21 @@ body {
   min-height: 100vh;
 }
 header {
-  background: linear-gradient(135deg, var(--main), var(--main-dark));
-  color: #fff;
-  padding: 14px 16px;
+  background-color: #1a62bf;
+  color: white;
   text-align: center;
+  padding: 15px 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 header h1 {
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
-  font-weight: 900;
-  text-shadow:
-    2px  2px 0 #000,
-   -2px  2px 0 #000,
-    2px -2px 0 #000,
-   -2px -2px 0 #000,
-    2px  0   0 #000,
-   -2px  0   0 #000,
-    0    2px 0 #000,
-    0   -2px 0 #000;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
-header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
-.tab-bar {
-  display: flex !important;
-  width: 100% !important;
-  background: #fff;
-  border-bottom: 2px solid var(--border);
-  box-sizing: border-box;
-  overflow: hidden;
+header p {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 .tab-btn, .tab-link {
   flex: 1 1 0% !important;
@@ -275,9 +263,9 @@ header p { font-size: 0.78rem; opacity: 0.85; margin-top: 3px; }
 </head>
 <body>
 <header>
-  <h1>📚 中学社会 一問一答</h1>
-  <p>志学ゼミナール｜穴埋めチャレンジ！全480問</p>
-</header>
+    <h1>📚 中学社会 一問一答</h1>
+    <p>志学ゼミナール｜穴埋めチャレンジ！</p>
+  </header>
 <div class="img-modal" id="imgModal" onclick="closeModal(event)">
   <img id="modalImg" src="" alt="拡大画像">
   <button class="modal-close" onclick="document.getElementById('imgModal').classList.remove('open')">✕ 閉じる</button>
