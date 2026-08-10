@@ -83,27 +83,30 @@
       padding: 0 10px 140px;
     }
 
-    /* サブタブ幅均一・表示調整 */
+    /* サブタブの折り返し禁止＆幅均一化調整 */
     .sub-tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 15px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 4px;
     }
     .sub-btn {
-      flex: 1 1 calc(20% - 8px);
-      min-width: 140px;
-      padding: 8px 10px;
+      flex: 1 1 0%;
+      min-width: 0;
+      padding: 8px 6px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
       background-color: white;
       color: #475569;
       cursor: pointer;
       font-weight: bold;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-align: center;
       box-sizing: border-box;
       transition: all 0.2s;
+      white-space: nowrap; /* テキスト改行を禁止 */
     }
     .sub-btn.active {
       background-color: #f59e0b;
