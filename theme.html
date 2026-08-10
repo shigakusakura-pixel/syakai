@@ -269,7 +269,7 @@
   </div>
 
   <div class="container">
-   <div class="sub-tabs">
+    <div class="sub-tabs">
       <button class="sub-btn active" onclick="loadSet('no1')">人物 No.1 (弥生〜鎌倉)</button>
       <button class="sub-btn" onclick="loadSet('no2')">人物 No.2 (室町〜江戸)</button>
       <button class="sub-btn" onclick="loadSet('no3')">人物 No.3 (江戸〜昭和)</button>
@@ -369,7 +369,7 @@
           { q: "【昭和】1972年日中共同声明を発表、中国との国交が正常化。", a: "田中角栄", exp: "「日本列島改造論」を掲げ、大規模なインフラ整備を推進しました。" }
         ]
       },
-     no4: {
+      no4: {
         title: "教科書に出てくる日本の文化 No.4 (旧石器～平安)",
         list: [
           { q: "【旧石器】石を打ち欠いただけの、ナウマンゾウなどの狩猟に使われた石器。", a: "打製石器", exp: "旧石器時代に使われた石器です。関東ローム層の岩宿遺跡や長野県の野尻湖が有名です。" },
@@ -432,23 +432,6 @@
           (key==='no4'&&idx===3) || 
           (key==='no5'&&idx===4)
         );
-      });
-
-    let currentSetKey = 'no1';
-    let selectedBox = null;
-
-    function formatQuestionText(text) {
-      return text.replace(/【(.*?)】/g, (match, era) => {
-        return `<span class="era-tag era-${era}">${era}</span>`;
-      });
-    }
-
-    function loadSet(key) {
-      currentSetKey = key;
-      const data = personQuestionsData[key];
-      
-      document.querySelectorAll('.sub-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', (key==='no1'&&idx===0)||(key==='no2'&&idx===1)||(key==='no3'&&idx===2)||(key==='no4'&&idx===3));
       });
 
       document.getElementById('section-title').textContent = data.title;
