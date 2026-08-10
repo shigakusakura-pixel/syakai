@@ -41,6 +41,17 @@ header p {
   font-size: 0.85rem;
   opacity: 0.9;
 }
+
+/* ★ 教科選択タブの横並び外枠CSS（ここを追加修正しました） ★ */
+.tab-bar, .main-tabs {
+  display: flex !important;
+  width: 100% !important;
+  background: #fff;
+  border-bottom: 2px solid var(--border);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .tab-btn, .tab-link {
   flex: 1 1 0% !important;
   width: 20% !important;
