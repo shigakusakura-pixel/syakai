@@ -1,4 +1,4 @@
-// mystudy.js
+// syakai / mystudy.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -14,25 +14,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ① 生徒IDチェック（未ログインならポータルへ戻す）
+// ① 未ログイン（ゲスト）遮断
 const urlParams = new URLSearchParams(window.location.search);
 const studentId = urlParams.get('student');
 const PORTAL_URL = "https://shigakusakura-pixel.github.io/mystudyroom/";
 
-if (!studentId || studentId === 'ゲスト' || studentId.trim() === '') {
+if (!studentId || studentId === 'ゲスト' || studentId === 'guest' || studentId.trim() === '') {
   alert("ログイン（生徒IDの確認）が必要です。ポータルへ戻ります。");
   window.location.replace(PORTAL_URL);
 }
 
-// ② 重複送信防止
-const sentRecords = new Set();
-
-// ③ 共通送信処理（画面ロック ＋ 送信完了アラート付き）
-window.sendLearningRecord = async function(unitId, questionId) {
-  const recordKey = unitId + "-" + questionId;
-  if (sentRecords.has(recordKey)) return;
-
-  // 画面操作ロック
+// 画面ロック表示関数
+function showLock() {
   const lock = document.createElement("div");
   lock.id = "lock-screen";
   lock.innerHTML = `<div style="background:#fff;padding:16px 24px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.3);font-weight:bold;">⏳ 記録を保存中...</div>`;
@@ -41,24 +34,24 @@ window.sendLearningRecord = async function(unitId, questionId) {
     background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: "99999"
   });
   document.body.appendChild(lock);
+  return lock;
+}
 
+// ② 社会用：採点・要点チェック完了時の送信関数
+window.sendResultToFirebase = async function(subjectName, unitName, correct, total) {
+  const lock = showLock();
   try {
-    // ページタイトルやパスから教科名を自動判定（例: 数学、理科など）
-    const subjectName = document.title || "教材";
-
     await addDoc(collection(db, "learning_records"), {
       studentId: studentId,
-      subject: subjectName,
-      unit: unitId,
-      questionId: questionId,
-      action: "答えを確認",
+      subject: subjectName || "中学社会",
+      unit: unitName,
+      correct: correct,
+      total: total,
+      action: "単元完了",
       timestamp: serverTimestamp()
     });
-
-    sentRecords.add(recordKey);
     lock.remove();
-    alert(`【記録完了】問題（${questionId}）を保存しました！`);
-
+    alert(`【記録完了】${unitName}（${correct}/${total}問正解）を保存しました！`);
   } catch (e) {
     console.error("保存失敗:", e);
     lock.remove();
