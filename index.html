@@ -1509,30 +1509,26 @@ function closeModal(e) {
   }
 }
 </script> 
-  // ===== 社会タイマー計測＆送信 =====
-  let syakaiStartTime = Date.now();
+<script>
+// ===== 社会タイマー計測&送信 =====
+let syakaiStartTime = Date.now();
 
-  // 単元切替関数（もしあればその末尾でもリセット）
-  function resetSyakaiTimer() {
-    syakaiStartTime = Date.now();
+// 単元切替関数（もしあればその末尾でもリセット）
+function resetSyakaiTimer() {
+  syakaiStartTime = Date.now();
+}
+
+// 単元保存ボタンの関数
+window.submitCurrentSyakaiUnit = function() {
+  // ...判定集計処理...
+  // 所要時間（秒）を計算
+  const durationSec = Math.floor((Date.now() - syakaiStartTime) / 1000);
+  if (window.sendResultToFirebase) {
+    window.sendResultToFirebase("中学社会", unitTitle, correct, total, durationSec);
+    syakaiStartTime = Date.now(); // タイマーリセット
   }
-
-  // 単元保存ボタンの関数（既存の関数名に合わせて呼び出し）
-  window.submitCurrentSyakaiUnit = function() {
-    // ...判定集計処理...
-    
-    // 所要時間（秒）を計算
-    const durationSec = Math.floor((Date.now() - syakaiStartTime) / 1000);
-
-    if (window.sendResultToFirebase) {
-      window.sendResultToFirebase("中学社会", unitTitle, correct, total, durationSec);
-      syakaiStartTime = Date.now(); // タイマーリセット
-    }
-  };
+};
 </script>
-<script type="module" src="./mystudy.js"></script>
-</body>
-</html>
 <script type="module" src="./mystudy.js"></script>
 </body>
 </html>
